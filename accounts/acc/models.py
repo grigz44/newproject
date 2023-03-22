@@ -85,7 +85,7 @@ class UserCartProduct(models.Model):
 class UserCart(models.Model):
     
     owner = models.OneToOneField(user, blank=True,on_delete=models.CASCADE)
-    product=models.ManyToManyField(UserCartProduct,blank=True)
+    product=models.ManyToManyField(UserCartProduct,blank=True,null=True)
     price = models.IntegerField(blank=True,null=True)
     
     

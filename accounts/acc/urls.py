@@ -16,6 +16,7 @@ urlpatterns = [
     path('product/<Unique_id>', api_views.createproduct.as_view(), name=""),
     path('productimg/', api_views.productimg.as_view(), name=""),
     path('productadd/', api_views.addproduct.as_view(), name=""),
+    path('cart/', api_views.cart.as_view(), name=""),
     
     
     

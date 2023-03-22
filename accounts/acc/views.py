@@ -35,11 +35,18 @@ class usercreate(APIView):
     
 
     def post(self,req, *args, **kwarg):
+        
+        
+        Login={'owner':req.data['Phone_number']}
 
         print(req.data)
         serializer = usercreateserializer(data=req.data)
+        logserial=usercartserializer(data=Login)
         if serializer.is_valid():
             serializer.save()
+            
+            if logserial.is_valid():
+                logserial.save()
             return Response(serializer.data)
         else:
             return Response(serializer.errors)
@@ -114,6 +121,7 @@ class addproduct(APIView):
         serializer = usercartproductserializer(data, many=True)
         return Response(serializer.data)
     
+    
 
     def post(self,req, *args, **kwarg):
 
@@ -124,3 +132,14 @@ class addproduct(APIView):
             return Response(serializer.data)
         else:
             return Response(serializer.errors)
+        
+        
+        
+class cart(APIView):
+    
+
+    def get(self, request):
+        
+        data = UserCart.objects.all()
+        serializer = usercartserializer(data, many=True)
+        return Response(serializer.data)
