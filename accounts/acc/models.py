@@ -59,7 +59,7 @@ class product(models.Model):
     
 class product_image(models.Model):
     product = models.ForeignKey(product,blank=True,on_delete=models.CASCADE)
-    image = models.FileField(upload_to='productimage')
+    image = models.ImageField(upload_to='productimage')
     
     
     class Meta:
