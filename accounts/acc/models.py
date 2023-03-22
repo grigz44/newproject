@@ -24,7 +24,7 @@ class userProfile(models.Model):
     Name =models.CharField(max_length=100)
     Date_of_birth = models.DateField()
     Gender = models.IntegerField(choices=gchoices)
-    Image = models.FileField(upload_to='image')
+    Image = models.ImageField(upload_to='image')
     
     class Meta:
         db_table = 'userprofile'
